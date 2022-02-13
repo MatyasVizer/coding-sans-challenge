@@ -755,18 +755,29 @@ const dataInit =`[
   
 const dataParsed = JSON.parse(dataInit);
 
+const beer_totals = []
+
+
 
 const beerGrouped = dataParsed.reduce((groupedBeers, beer) => {
     const brand = beer.brand
     if (groupedBeers[brand] == null) groupedBeers[brand] = []
     groupedBeers[brand].push(beer.price)
-    for (let i = 0; i < groupedBeers.length; i++) {
-        for (let k = 0; k < array.length; k++) {
-            
-        }
-        
-    }
     return groupedBeers
 }, {})
 
-console.log(beerGrouped)
+const getCheapest = function() {
+    for (const key in beerGrouped) {
+        let sum = 0;
+        beerGrouped[key].forEach(element => {
+            sum += parseInt(element)/beerGrouped[key].length            
+        });        
+        beer_totals.push(sum)
+    }
+    const min = Math.min(...beer_totals)
+    const index = beer_totals.indexOf(min)
+    const result = Object.getOwnPropertyNames(beerGrouped)[2]
+    console.log(`"` + result + `"`)
+}
+
+getCheapest()

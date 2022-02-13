@@ -755,10 +755,10 @@ const dataInit =`[
   
 const dataParsed = JSON.parse(dataInit);
 
+const beer_names = [];
 
 const filterBeers = function(ingredient) {
     
-    const beer_names = [];
 
     for (let i = 0; i < dataParsed.length; i++) {
         for (let k = 0; k < dataParsed[i].ingredients.length; k++) {

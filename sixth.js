@@ -762,7 +762,7 @@ function groupByPrice () {
     groupedBeers[price].push(beer.id)
     return groupedBeers
     }, {})
-console.log(JSON.stringify(priceGrouped))}
+    console.log(JSON.stringify(priceGrouped))}
 
 function roundToNearest100(num) {
     return Math.round(num / 100) * 100;
