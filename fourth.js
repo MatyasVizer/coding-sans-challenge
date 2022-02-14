@@ -1,6 +1,6 @@
 'use strict';
 
-const dataInit =`[
+const initial_data =`[
     {
       "id": "ccw-1",
       "name": "Coding Challenge White",
@@ -753,17 +753,17 @@ const dataInit =`[
     }
   ]`;
   
-const dataParsed = JSON.parse(dataInit);
-
-const beer_names = [];
-
+  
 const filterBeers = function(ingredient) {
-    
+      
+    const parsed_data = JSON.parse(initial_data);
+      
+    const beer_names = [];
 
-    for (let i = 0; i < dataParsed.length; i++) {
-        for (let k = 0; k < dataParsed[i].ingredients.length; k++) {
-            if(dataParsed[i].ingredients[k].name == ingredient && dataParsed[i].ingredients[k].ratio == "0") {
-                beer_names.push(dataParsed[i].id);
+    for (let i = 0; i < parsed_data.length; i++) {
+        for (let k = 0; k < parsed_data[i].ingredients.length; k++) {
+            if(parsed_data[i].ingredients[k].name == ingredient && parsed_data[i].ingredients[k].ratio == "0") {
+                beer_names.push(parsed_data[i].id);
             }
         } 
     }

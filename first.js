@@ -1,6 +1,6 @@
 'use strict';
 
-const dataInit =`[
+const initial_data =`[
     {
       "id": "ccw-1",
       "name": "Coding Challenge White",
@@ -753,12 +753,17 @@ const dataInit =`[
     }
   ]`;
 
-const dataParsed = JSON.parse(dataInit);
+function groupingFunc() {
+    const parsed_data = JSON.parse(initial_data);
 
-const groupByBrand = Object.entries(dataParsed.reduce((acc, { brand, id }) => {
-        acc[brand] = (acc[brand] || []);
-        acc[brand].push(id);
-        return acc;
-    }, {})).map(([key, value]) => ({ brand: key, beers: value }));
-  
-  console.dir(groupByBrand);
+    const groupByBrand = Object.entries(parsed_data.reduce((acc, { brand, id }) => {
+        const parsed_data = JSON.parse(initial_data);
+            acc[brand] = (acc[brand] || []);
+            acc[brand].push(id);
+            return acc;
+        }, {})).map(([key, value]) => ({ brand: key, beers: value }));
+    
+    console.dir(JSON.stringify(groupByBrand));
+}
+
+groupingFunc()

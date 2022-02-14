@@ -1,6 +1,6 @@
 'use strict';
 
-const dataInit =`[
+const initial_data =`[
     {
       "id": "ccw-1",
       "name": "Coding Challenge White",
@@ -753,20 +753,18 @@ const dataInit =`[
     }
   ]`;
   
-const dataParsed = JSON.parse(dataInit);
-
-const beer_totals = []
-
-
-
-const beerGrouped = dataParsed.reduce((groupedBeers, beer) => {
-    const brand = beer.brand
-    if (groupedBeers[brand] == null) groupedBeers[brand] = []
-    groupedBeers[brand].push(beer.price)
-    return groupedBeers
-}, {})
-
 const getCheapest = function() {
+
+    const parsed_data = JSON.parse(initial_data);
+
+    const beerGrouped = parsed_data.reduce((groupedBeers, beer) => {
+        const brand = beer.brand
+        if (groupedBeers[brand] == null) groupedBeers[brand] = []
+        groupedBeers[brand].push(beer.price)
+        return groupedBeers
+    }, {})
+
+    const beer_totals = []
     for (const key in beerGrouped) {
         let sum = 0;
         beerGrouped[key].forEach(element => {

@@ -1,3 +1,4 @@
+// JSON imported at the top of the file, solutions can be found below that
 'use strict';
 
 const initial_data =`[
@@ -752,8 +753,113 @@ const initial_data =`[
       ]
     }
   ]`;
+
+// First solution:
+
+console.log("\n")
+console.log("First solution:")
+console.log("\n")
+
+function groupingFunc() {
+    const parsed_data = JSON.parse(initial_data);
+
+    const groupByBrand = Object.entries(parsed_data.reduce((acc, { brand, id }) => {
+        const parsed_data = JSON.parse(initial_data);
+            acc[brand] = (acc[brand] || []);
+            acc[brand].push(id);
+            return acc;
+        }, {})).map(([key, value]) => ({ brand: key, beers: value }));
+    
+    console.dir(JSON.stringify(groupByBrand));
+}
+
+groupingFunc()
+
+// Second solution:
+
+console.log("\n")
+console.log("Second solution:")
+console.log("\n")
   
-  const sortByWater = function() {
+const listByType = type => {
+    const beer_names = [];
+    const parsed_data = JSON.parse(initial_data);
+    for (let i = 0; i < parsed_data.length; i++) {
+      if (parsed_data[i].type == type) {
+          beer_names.push(parsed_data[i].id)
+      }
+    }
+    console.log(JSON.stringify(beer_names))
+}
+
+    // Place the desired type filter between " ",  e.g "Wheat"
+
+listByType("White")
+
+// Third solution:
+
+console.log("\n")
+console.log("Third solution:")
+console.log("\n")
+
+const getCheapest = function() {
+
+    const parsed_data = JSON.parse(initial_data);
+
+    const beerGrouped = parsed_data.reduce((groupedBeers, beer) => {
+        const brand = beer.brand
+        if (groupedBeers[brand] == null) groupedBeers[brand] = []
+        groupedBeers[brand].push(beer.price)
+        return groupedBeers
+    }, {})
+
+    const beer_totals = []
+    for (const key in beerGrouped) {
+        let sum = 0;
+        beerGrouped[key].forEach(element => {
+            sum += parseInt(element)/beerGrouped[key].length            
+        });        
+        beer_totals.push(sum)
+    }
+    const min = Math.min(...beer_totals)
+    const index = beer_totals.indexOf(min)
+    const result = Object.getOwnPropertyNames(beerGrouped)[2]
+    console.log(`"` + result + `"`)
+}
+
+getCheapest()
+
+// Fourth solution
+
+console.log("\n")
+console.log("Fourth solution:")
+console.log("\n")
+
+const filterBeers = function(ingredient) {
+      
+    const parsed_data = JSON.parse(initial_data);
+      
+    const beer_names = [];
+
+    for (let i = 0; i < parsed_data.length; i++) {
+        for (let k = 0; k < parsed_data[i].ingredients.length; k++) {
+            if(parsed_data[i].ingredients[k].name == ingredient && parsed_data[i].ingredients[k].ratio == "0") {
+                beer_names.push(parsed_data[i].id);
+            }
+        } 
+    }
+    console.log(JSON.stringify(beer_names))
+}
+
+filterBeers("barley")
+
+//Fifth solution
+
+console.log("\n")
+console.log("Fifth solution:")
+console.log("\n")
+
+const sortByWater = function() {
     const parsed_data = JSON.parse(initial_data);
 
     const beer_contents = []
@@ -791,3 +897,26 @@ const initial_data =`[
     console.log(JSON.stringify(beer_ids))
 }
 sortByWater()
+
+//Sixth solution
+
+console.log("\n")
+console.log("Sixth solution:")
+console.log("\n")
+
+function groupByPrice () {
+    const parsed_data = JSON.parse(initial_data);
+    
+    const priceGrouped = parsed_data.reduce((groupedBeers, beer) => {
+    const price = roundUpTo100(beer.price)
+    if (groupedBeers[price] == null) groupedBeers[price] = []
+    groupedBeers[price].push(beer.id)
+    return groupedBeers
+    }, {})
+    console.log(JSON.stringify(priceGrouped))}
+
+function roundUpTo100(num) {
+    return Math.ceil(num / 100) * 100;
+}
+
+groupByPrice()

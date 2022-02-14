@@ -1,6 +1,6 @@
 'use strict';
 
-const dataInit =`[
+const initial_data =`[
     {
       "id": "ccw-1",
       "name": "Coding Challenge White",
@@ -753,19 +753,17 @@ const dataInit =`[
     }
   ]`;
   
-  const dataParsed = JSON.parse(dataInit);
-  
-  const listByType = type => {
+const listByType = type => {
     const beer_names = [];
-
-    for (let i = 0; i < dataParsed.length; i++) {
-        if (dataParsed[i].type == type) {
-            beer_names.push(dataParsed[i].id)
-        }
+    const parsed_data = JSON.parse(initial_data);
+    for (let i = 0; i < parsed_data.length; i++) {
+      if (parsed_data[i].type == type) {
+          beer_names.push(parsed_data[i].id)
+      }
     }
     console.log(JSON.stringify(beer_names))
-    }
+}
 
-// Place the desired type filter between " ",  e.g "Wheat"
+    // Place the desired type filter between " ",  e.g "Wheat"
 
-listByType("Corn")
+listByType("White")

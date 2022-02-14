@@ -1,6 +1,6 @@
 'use strict';
 
-const dataInit =`[
+const initial_data =`[
     {
       "id": "ccw-1",
       "name": "Coding Challenge White",
@@ -753,19 +753,20 @@ const dataInit =`[
     }
   ]`;
   
-const dataParsed = JSON.parse(dataInit);
-
+  
 function groupByPrice () {
-    const priceGrouped = dataParsed.reduce((groupedBeers, beer) => {
-    const price = roundToNearest100(beer.price)
+    const parsed_data = JSON.parse(initial_data);
+    
+    const priceGrouped = parsed_data.reduce((groupedBeers, beer) => {
+    const price = roundUpTo100(beer.price)
     if (groupedBeers[price] == null) groupedBeers[price] = []
     groupedBeers[price].push(beer.id)
     return groupedBeers
     }, {})
     console.log(JSON.stringify(priceGrouped))}
 
-function roundToNearest100(num) {
-    return Math.round(num / 100) * 100;
+function roundUpTo100(num) {
+    return Math.ceil(num / 100) * 100;
 }
 
 groupByPrice()
