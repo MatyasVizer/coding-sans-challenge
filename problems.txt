@@ -1,0 +1,39 @@
+01. Group beers by brand:
+
+Boris has a list of all the beers available in his pub, but it's a huge mess.
+He would like to see the beers grouped by brands.
+Boris also told you that the Function should return an array of objects which contains the Brand name and an array of beer IDs of that Brand.
+
+02. Filter beers by BeerType
+
+Ok my friend. Good job! Just one more thing...
+You know, some of my friends are picky. They don't like every type of beer. I need a list of the beers filtered by beer types. Keep in mind that the Function should take a BeerType and return all the beer IDs in an array of that type.
+Filter for the `Brown` type! (Note: the input may change when you reload the page!)
+
+03. Get the cheapest brand
+
+Did I tell you that you're my smartest friend? And I have a lot of good friends! Okay! Just one more thing, good?
+You know, sometimes my friends come over and I give them a couple beers for free. Luckily, they're not picky at all, they drink everything. So I need a list of the cheapest beers in my pub so I can avoid giving them expensive ones.
+Understand?
+My friend, here is what I need: a Function that returns the name of the brand that has the cheapest average price. (Note: The brand name should be in quotes "")
+
+04. Allergies - which beer lacks a special ingredient?
+
+Do you know my friend Vasily Grigoryevich Zaytsev? NO??
+Never mind!
+He has some problems drinking wheat beer and I want to help him because he is my best friend, understand? We friends help each other, right?
+Here is what I need: a Function that takes an ingredient's name and returns an array of beer IDs that lack that ingredient. Friendly note from Boris: don't mess this up! If Vasily gets sick, he will be very upset.
+He isn't as patient as I am!
+Filter for the `corn` ingredient! (Note: the input may change when you reload the page!)
+
+05. Sort by remaining water ratio
+
+Oh yeah, you got this! Just do one more for fun! I want to know the water ratio of the different beers I have
+The function should return all beer IDs sorted in a descending order by their water ingredient ratio. The remaining part of the listed ingredients is the water (ignore alcohol).
+The first item should be the most watered down beer, then if two beers have the same water ratio, sort them by the alphabetic order of their IDs.
+
+06. Map beers to rounded price
+
+We're having fun my friend! Let's do another one:
+Most of my customers round up the price to the nearest hundred, they call that a tip. Let's list my beers based on their price with a tip!
+The function should return a map where the keys are the prices rounded up to the nearest hundred and the values are arrays of the beer IDs with that price range.

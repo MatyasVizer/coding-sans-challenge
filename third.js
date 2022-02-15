@@ -774,7 +774,7 @@ const getCheapest = function() {
     }
     const min = Math.min(...beer_totals)
     const index = beer_totals.indexOf(min)
-    const result = Object.getOwnPropertyNames(beerGrouped)[2]
+    const result = Object.getOwnPropertyNames(beerGrouped)[index]
     console.log(`"` + result + `"`)
 }
 
