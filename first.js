@@ -763,7 +763,7 @@ function groupingFunc() {
             return acc;
         }, {})).map(([key, value]) => ({ brand: key, beers: value }));
     
-    console.dir(JSON.stringify(groupByBrand));
+    console.log(JSON.stringify(groupByBrand));
 }
 
 groupingFunc()
